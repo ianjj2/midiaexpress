@@ -3,17 +3,10 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { Dialog } from '@headlessui/react';
-import type { Banner } from '@/lib/supabase';
+import type { Banner, Device } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-
-// Tipagem básica do dispositivo
-interface Device {
-  id: string;
-  name: string;
-  status: 'active' | 'inactive';
-  last_seen: string;
-}
+import { useUserRole } from '@/hooks/useUserRole';
 
 export default function DevicesPage() {
   const [devices, setDevices] = useState<Device[]>([]);
@@ -28,7 +21,7 @@ export default function DevicesPage() {
   const [selectedBanners, setSelectedBanners] = useState<string[]>([]);
   const [savingAssign, setSavingAssign] = useState(false);
   const router = useRouter();
-  const userRole = localStorage.getItem('userRole') || 'admin';
+  const userRole = useUserRole();
 
   useEffect(() => {
     if (userRole !== 'admin' && userRole !== 'operador' && userRole !== 'visualizador') {

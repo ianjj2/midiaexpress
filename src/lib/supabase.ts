@@ -30,4 +30,11 @@ export type Banner = {
   created_at: string;
   file_type: 'image' | 'video';
   status: 'active' | 'inactive';
+};
+
+export type Device = {
+  id: string;
+  name: string;
+  status: 'active' | 'inactive';
+  last_seen: string;
 }; 

@@ -6,13 +6,14 @@ import type { Banner } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Dialog } from '@headlessui/react';
+import { useUserRole } from '@/hooks/useUserRole';
 
 export default function InactiveBannersPage() {
   const [banners, setBanners] = useState<Banner[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const userRole = localStorage.getItem('userRole') || 'admin';
+  const userRole = useUserRole();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [bannerToEdit, setBannerToEdit] = useState<string | null>(null);
 

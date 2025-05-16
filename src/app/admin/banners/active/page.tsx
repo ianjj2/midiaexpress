@@ -5,13 +5,14 @@ import { supabase } from '@/lib/supabase';
 import type { Banner } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useUserRole } from '@/hooks/useUserRole';
 
 export default function ActiveBannersPage() {
   const [banners, setBanners] = useState<Banner[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const userRole = localStorage.getItem('userRole') || 'admin';
+  const userRole = useUserRole();
 
   useEffect(() => {
     if (userRole !== 'admin' && userRole !== 'operador' && userRole !== 'visualizador') {
