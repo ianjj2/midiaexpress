@@ -13,7 +13,7 @@ export default function AddBannerPage() {
   return (
     <div className="glass-morphism p-6 rounded-xl">
       <h2 className="text-2xl font-bold text-white mb-6">Adicionar Novo Banner</h2>
-      <AddBannerForm onSuccess={handleSuccess} />
+      <AddBannerForm onBannerAdded={handleSuccess} />
     </div>
   );
 } 
