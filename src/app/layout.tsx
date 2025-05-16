@@ -2,8 +2,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Outdoor Digital',
-  description: 'Sistema de gerenciamento de banners digitais',
+  title: 'Midia Express',
+  description: 'A vitrine digital do seu negócio.',
 };
 
 export default function RootLayout({
